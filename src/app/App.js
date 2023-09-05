@@ -1,8 +1,9 @@
-import { useState } from "react";
-import Counter from "../../components/counter";
-import Searcher from "../../components/searcher";
-import "./styles.css";
-import Selector from "../../components/selecter";
+import {useState} from 'react';
+import './App.css';
+import Counter from '../shared/ui/Counter/Counter';
+import SearchForm from '../shared/ui/SearchForm/SearchForm';
+import SelectTabs from '../shared/ui/SelectTabs/SelectTabs';
+
 
 const genres = [
   { id: "all", name: "genre", value: "ALL" },
@@ -12,7 +13,7 @@ const genres = [
   { id: "crime", name: "genre", value: "CRIME" },
 ];
 
-const MainPage = () => {
+const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("ALL");
 
@@ -23,23 +24,22 @@ const MainPage = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearchValue('');
+    setSearchValue("");
   };
 
   const handleChangeSelectedGenre = (event) => {
     setSelectedGenre(event.target.value);
   };
-
   return (
     <div className="main-page">
       <Counter initialValue={5} />
-      <Searcher
+      <SearchForm
         value={searchValue}
         onChange={handleSearchQueryChange}
         onSearch={handleSearch}
-        placeholder={'What do you want to search?'}
+        placeholder={"What do you want to search?"}
       />
-      <Selector
+      <SelectTabs
         genres={genres}
         selectedGenre={selectedGenre}
         onSelect={handleChangeSelectedGenre}
@@ -48,4 +48,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default App;

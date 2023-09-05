@@ -1,6 +1,7 @@
-import "./styles.css";
+import "./SelectTabs.css";
+import cx from "classnames";
 
-const Selector = ({ genres = [], selectedGenre, onSelect }) => {
+const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
   return (
     <div className="selector">
       {genres.map((genre) => {
@@ -19,9 +20,9 @@ const Selector = ({ genres = [], selectedGenre, onSelect }) => {
               {genre.value}
             </label>
             <div
-              className={`selector-line ${
-                selectedGenre === genre.value && "active"
-              }`}
+              className={cx("selector-line", {
+                active: selectedGenre === genre.value,
+              })}
             ></div>
           </div>
         );
@@ -30,4 +31,4 @@ const Selector = ({ genres = [], selectedGenre, onSelect }) => {
   );
 };
 
-export default Selector;
+export default SelectTabs;

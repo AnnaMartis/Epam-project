@@ -1,6 +1,6 @@
-import "./styles.css";
+import "./SearchForm.css";
 
-const Searcher = ({ value, onChange, onSearch, placeholder }) => {
+const SearchForm = ({ value, onChange, onSearch, placeholder }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -27,4 +27,4 @@ const Searcher = ({ value, onChange, onSearch, placeholder }) => {
   );
 };
 
-export default Searcher;
+export default SearchForm;
