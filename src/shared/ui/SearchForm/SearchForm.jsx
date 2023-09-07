@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SearchForm.css";
-import { palette } from "../../styles/palette";
+import { buttonStyle, inputStyle } from "../../styles/elements";
 
 const SearchForm = ({ initialValue, onSearch, placeholder }) => {
   const [queryValue, setQueryValue] = useState(initialValue);
@@ -20,10 +20,7 @@ const SearchForm = ({ initialValue, onSearch, placeholder }) => {
       <input
         type="text"
         className="search-input"
-        style={{
-          backgroundColor: palette.primary.main,
-          color: palette.primary.contrastText,
-        }}
+        style={inputStyle}
         value={queryValue}
         onChange={handleQueryValueChange}
         onKeyDown={handleKeyPress}
@@ -32,10 +29,7 @@ const SearchForm = ({ initialValue, onSearch, placeholder }) => {
       />
       <button
         className="search-button"
-        style={{
-          backgroundColor: palette.primary.light,
-          color: palette.primary.contrastText,
-        }}
+        style={buttonStyle}
         type="submit"
       >
         SEARCH
