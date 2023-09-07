@@ -1,6 +1,13 @@
+import { useState } from "react";
 import "./SearchForm.css";
+import { palette } from "../../styles/palette";
 
-const SearchForm = ({ value, onChange, onSearch, placeholder }) => {
+const SearchForm = ({ initialValue, onSearch, placeholder }) => {
+  const [queryValue, setQueryValue] = useState(initialValue);
+
+  const handleQueryValueChange = (event) => {
+    setQueryValue(event.target.value);
+  };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -9,18 +16,28 @@ const SearchForm = ({ value, onChange, onSearch, placeholder }) => {
   };
 
   return (
-    <form className="searcher" onSubmit={onSearch}>
+    <form className="search" onSubmit={onSearch}>
       <input
         type="text"
-        className="searcher-input"
-        value={value}
+        className="search-input"
+        style={{
+          backgroundColor: palette.primary.main,
+          color: palette.primary.contrastText,
+        }}
+        value={queryValue}
+        onChange={handleQueryValueChange}
         onKeyDown={handleKeyPress}
         onFocus={onSearch}
-        onChange={onChange}
         placeholder={placeholder}
-        
       />
-      <button className="searcher-button" type="submit">
+      <button
+        className="search-button"
+        style={{
+          backgroundColor: palette.primary.light,
+          color: palette.primary.contrastText,
+        }}
+        type="submit"
+      >
         SEARCH
       </button>
     </form>

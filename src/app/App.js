@@ -14,13 +14,8 @@ const genres = [
 ];
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const [, setSearchValue] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("ALL");
-
-  const handleSearchQueryChange = (event) => {
-    const value = event.target.value;
-    setSearchValue(value);
-  };
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -34,8 +29,7 @@ const App = () => {
     <div className="main-page">
       <Counter initialValue={5} />
       <SearchForm
-        value={searchValue}
-        onChange={handleSearchQueryChange}
+        initialValue={''}
         onSearch={handleSearch}
         placeholder={"What do you want to search?"}
       />
