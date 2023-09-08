@@ -4,7 +4,30 @@
   gap: 6px;
 }
 
-.search-input:focus {
-  outline: none;
-}
-
+.search-input {
+    background-color: #424242;
+    color: white;
+    width: 713px;
+    height: 57px;
+    border-radius: 4px;
+    opacity: 0.8;
+    border: none;
+    padding: 4px 10px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .search-input:focus {
+    outline: none;
+  }
+  
+  .search-button {
+    background-color: #f65261;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 233px;
+  }

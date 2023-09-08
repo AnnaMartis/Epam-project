@@ -24,7 +24,8 @@ selector-wrapper {
 }
 
 .selector-line.active {
-  /* background-color: #f65261; */
+  background-color: #f65261;
+  height: 4px;
 }
 
 .bottom-line {

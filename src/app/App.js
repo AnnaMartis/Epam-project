@@ -14,12 +14,10 @@ const genres = [
 ];
 
 const App = () => {
-  const [, setSearchValue] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("ALL");
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearchValue("");
   };
 
   const handleChangeSelectedGenre = (event) => {

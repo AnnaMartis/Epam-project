@@ -1,4 +1,3 @@
-import { palette } from "../../styles/palette";
 import "./SelectTabs.css";
 import cx from "classnames";
 
@@ -22,13 +21,6 @@ const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
                 {genre.value}
               </label>
               <hr
-                style={{
-                  backgroundColor: `${
-                    selectedGenre === genre.value
-                      ? palette.primary.light
-                      : palette.primary.neutral
-                  }`,
-                }}
                 className={cx("selector-line", {
                   active: selectedGenre === genre.value,
                 })}
