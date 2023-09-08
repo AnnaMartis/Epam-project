@@ -1,6 +1,6 @@
 import { Component, createElement } from "react";
 
-class Counter extends Component {
+export class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = { number: props?.initialValue ?? 0  };
@@ -24,6 +24,4 @@ class Counter extends Component {
       createElement("button", { className: "decrement", onClick: this.handleDecrement }, "Decrement"),
     );
   }
-}
-
-export default Counter;
+};

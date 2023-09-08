@@ -1,11 +1,15 @@
 import { useState } from "react";
 import "./SearchForm.css";
 
-const SearchForm = ({ initialValue, onSearch, placeholder }) => {
-  const [queryValue, setQueryValue] = useState(initialValue);
+export const SearchForm = ({ initialValue, onSearch, placeholder }) => {
+  const [searchValue, setSearchValue] = useState(initialValue);
 
-  const handleQueryValueChange = (event) => {
-    setQueryValue(event.target.value);
+  const updateSearchValue = (value) => {
+    setSearchValue(value);
+   };
+
+  const handleInputChange = (event) => {
+    updateSearchValue(event.target.value);
   };
 
   const handleKeyPress = (event) => {
@@ -19,8 +23,8 @@ const SearchForm = ({ initialValue, onSearch, placeholder }) => {
       <input
         type="text"
         className="search-input"
-        value={queryValue}
-        onChange={handleQueryValueChange}
+        value={searchValue}
+        onChange={handleInputChange}
         onKeyDown={handleKeyPress}
         onFocus={onSearch}
         placeholder={placeholder}
@@ -35,4 +39,3 @@ const SearchForm = ({ initialValue, onSearch, placeholder }) => {
   );
 };
 
-export default SearchForm;

@@ -1,7 +1,16 @@
 import "./SelectTabs.css";
 import cx from "classnames";
 
-const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
+
+const genresList = [
+  { id: "all", name: "genre", value: "ALL" },
+  { id: "doc", name: "genre", value: "DOCUMENTARY" },
+  { id: "com", name: "genre", value: "COMEDY" },
+  { id: "horror", name: "genre", value: "HORROR" },
+  { id: "crime", name: "genre", value: "CRIME" },
+];
+
+export const SelectTabs = ({ genres = genresList, selectedGenre, onSelect }) => {
   return (
     <div className="selector-wrapper">
       <div className="selector">
@@ -33,5 +42,3 @@ const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
     </div>
   );
 };
-
-export default SelectTabs;
