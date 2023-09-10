@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Counter, SearchForm, SelectTabs } from "../shared/ui";
+import { genresList } from "../shared/constants";
 
 
 
@@ -23,6 +24,7 @@ const App = () => {
         placeholder={"What do you want to search?"}
       />
       <SelectTabs
+        genres={genresList}
         selectedGenre={selectedGenre}
         onSelect={handleChangeSelectedGenre}
       />
