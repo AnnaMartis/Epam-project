@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./SearchForm.css";
 
-export const SearchForm = ({ initialValue, onSearch, placeholder }) => {
+export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
   const [searchValue, setSearchValue] = useState(initialValue);
 
   const updateSearchValue = (value) => {
     setSearchValue(value);
-   };
+  };
 
   const handleInputChange = (event) => {
     updateSearchValue(event.target.value);
@@ -29,13 +29,9 @@ export const SearchForm = ({ initialValue, onSearch, placeholder }) => {
         onFocus={onSearch}
         placeholder={placeholder}
       />
-      <button
-        className="search-button"
-        type="submit"
-      >
+      <button className="search-button" type="submit">
         SEARCH
       </button>
     </form>
   );
 };
-
