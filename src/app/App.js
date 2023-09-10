@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Counter, SearchForm, SelectTabs } from "../shared/ui";
-import { genresList } from "../shared/constants";
-
-
+import { genresList } from "../shared/ui/SelectTabs/selectTabsMock";
 
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState("ALL");

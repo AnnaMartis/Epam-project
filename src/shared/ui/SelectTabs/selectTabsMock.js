@@ -4,4 +4,4 @@ export const genresList = [
     { id: "com", name: "genre", value: "COMEDY" },
     { id: "horror", name: "genre", value: "HORROR" },
     { id: "crime", name: "genre", value: "CRIME" },
-  ];
+];
