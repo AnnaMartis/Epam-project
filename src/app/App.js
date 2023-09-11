@@ -18,7 +18,7 @@ export const App = () => {
       <Counter initialValue={5} />
       <SearchForm
         initialValue={""}
-        onSearch={handleSearch}
+        onChange={handleSearch}
         placeholder={"What do you want to search?"}
       />
       <SelectTabs
