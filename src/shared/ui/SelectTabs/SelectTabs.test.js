@@ -6,7 +6,7 @@ import { genresList } from "./selectTabsMock";
 import userEvent from "@testing-library/user-event";
 
 describe("SelectTab Component Functionality", () => {
-  test("Renders All Genres", () => {
+  test("Should Render All Genres", () => {
     const onChange = jest.fn();
     render(
       <SelectTabs
@@ -20,7 +20,7 @@ describe("SelectTab Component Functionality", () => {
       expect(genreElement).toBeInTheDocument();
     });
   });
-  test("component highlights a selected genre passed in props", () => {
+  test("shoul component highlight a selected genre passed in props", () => {
     const onChange = jest.fn();
     const selectedTab = genresList[0];
     render(
@@ -41,7 +41,7 @@ describe("SelectTab Component Functionality", () => {
       expect(genreElement).toBeInTheDocument();
     });
   });
-  test("click event on a genre button component calls onChange callback and passes correct genre in arguments", () => {
+  test("click event on a genre button component should call onChange callback and passes correct genre in arguments", () => {
     const onChange = jest.fn();
     const selectedTab = genresList[0];
     const willBeClickedTab = genresList[1];

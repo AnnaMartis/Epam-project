@@ -7,20 +7,20 @@ import { Counter } from "./Counter";
 
 
 describe("Counter Component Functionality", () => {
-  test("Renders Initial Value", () => {
+  test("Should Render Initial Value", () => {
     const initialValue = 5;
     render(<Counter initialValue={initialValue} />);
     const initialValueElement = screen.getByText(initialValue);
     expect(initialValueElement).toBeInTheDocument();
   });
-  test("Decrement Button Functionality", () => {
+  test("Should Decrement when Button Clicked", () => {
     const initialValue = 1;
     render(<Counter initialValue={initialValue}/>);
     const decrementElement = screen.getByText('Decrement');
     userEvent.click(decrementElement);
     expect(screen.getByText(initialValue - 1)).toBeInTheDocument();
   });
-  test("Increment Button Functionality", () => {
+  test("Should Increment when Button Clicked", () => {
     const initialValue = 1;
     render(<Counter initialValue={initialValue}/>);
     const decrementElement = screen.getByText('Increment');

@@ -6,14 +6,14 @@ import { SearchForm } from "./SearchForm";
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 describe("SearchForm Component Functionality", () => {
-  test("Renders Initial Value", () => {
+  test("Should Render Initial Value", () => {
     const initialValue = "Test";
     render(<SearchForm initialValue={initialValue} />);
     const inputElement = screen.getByRole("textbox");
     const inputValue = inputElement.value;
     expect(inputValue).toBe(initialValue);
   });
-  test("onChange fires with right value when clicked submit after typing", () => {
+  test("Should onChange fire with right value when clicked submit after typing", () => {
     const mockOnChange = jest.fn((e) => e.preventDefault());
     const changedValue = "Javascript";
 
@@ -39,7 +39,7 @@ describe("SearchForm Component Functionality", () => {
     expect(mockOnChange).toBeCalled();
   });
 
-  test("onChange fires with right value when clicked enter after typing", () => {
+  test("Should onChange fire with right value when clicked enter after typing", () => {
     const mockOnChange = jest.fn((e) => e.preventDefault());
     const changedValue = "Javascript";
 
