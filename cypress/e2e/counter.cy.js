@@ -2,7 +2,7 @@ describe('Counter Part', () => {
   it('successfully loads', () => {
     cy.visit('http://localhost:3000');
   });
-
+  
   // it ('increments value when clicked Increment', ()=>{
   //   const value = cy.get('.number');
   //   cy.get('.increment').click();
