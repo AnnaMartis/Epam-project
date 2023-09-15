@@ -2,7 +2,7 @@ import { SelectTabs } from "../shared/ui/";
 import { genresList } from "../shared/ui/SelectTabs/selectTabsMock";
 
 export default {
-  title: "SelectTabs - a component which allows to switch tabs",
+  title: "SelectTabs",
   component: SelectTabs,
 };
 

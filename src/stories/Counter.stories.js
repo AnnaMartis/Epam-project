@@ -1,7 +1,7 @@
 import { Counter } from "../shared/ui/";
 
 export default {
-  title: "Counter - A Simple Counter Wich Increments and Decrements Values",
+  title: "Counter",
   component: Counter,
 };
 

@@ -1,7 +1,7 @@
 import { SearchForm } from "../shared/ui/";
 
 export default {
-  title: "Search Form - A Simple SearchForm Component",
+  title: "SearchForm",
   component: SearchForm,
 };
 
