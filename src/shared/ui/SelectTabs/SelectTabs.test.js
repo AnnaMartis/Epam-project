@@ -20,7 +20,7 @@ describe("SelectTab Component Functionality", () => {
       expect(genreElement).toBeInTheDocument();
     });
   });
-  test("shoul component highlight a selected genre passed in props", () => {
+  test("Should highlight a component with selected genre passed in props", () => {
     const onChange = jest.fn();
     const selectedTab = genresList[0];
     render(
