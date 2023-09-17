@@ -1,0 +1,26 @@
+.movie-title {
+    width: 300px;
+    background-color: #232323;
+    color: white;
+}
+
+.movie-title  .title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.movie-title  .title .movie-name {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.movie-title  .title .release-year{
+    border: .1px solid white;
+    padding: 2px;
+}
+
+
+.movie-title .genres {
+    padding: 0 4px;
+}
