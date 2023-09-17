@@ -1,6 +1,5 @@
 import { MovieTitle } from "../entities";
 
-
 export default {
     title: "MovieTitle",
     component: MovieTitle,
