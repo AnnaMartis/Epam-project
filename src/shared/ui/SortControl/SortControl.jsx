@@ -3,7 +3,7 @@ import "./SortControl.css";
 export const SortControl = ({ options, selectedOption, onSelectCB }) => {
   return (
     <div className="sort-control">
-      <label className="options-label" for="options">SORT BY</label>
+      <label className="options-label" htmlFor="options">SORT BY</label>
       <select name="options" id="options" value={selectedOption.value} onChange={onSelectCB}>
         {options.map((option, id) => {
           return (
