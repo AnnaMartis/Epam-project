@@ -14,12 +14,12 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      onSearch(event);
+      onSearch(event.target.value);
     }
   };
 
   return (
-    <form className="search" onSubmit={onSearch}>
+    <form className="search" onSubmit={()=> onSearch(searchValue)}>
       <input
         type="text"
         data-testid="search-input"
