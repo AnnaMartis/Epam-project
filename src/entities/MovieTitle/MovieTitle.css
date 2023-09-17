@@ -2,6 +2,7 @@
     width: 300px;
     background-color: #232323;
     color: white;
+    position: relative;
 }
 
 .movie-title  .title {
@@ -23,4 +24,30 @@
 
 .movie-title .genres {
     padding: 0 4px;
+}
+
+.context-menu{
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    cursor: pointer;
+}
+
+.context-menu .items.active{
+    width: 100px;
+    height: 70px;
+    background-color: white;
+    color: black;
+    padding: 4px;
+}
+
+
+.context-menu .items.hidden{
+   display: none;
+}
+
+
+.context-menu .items p:hover{
+    background-color: antiquewhite;
 }
