@@ -9,20 +9,20 @@ describe("SearchForm Component Functionality", () => {
   test("Should Render Initial Value", () => {
     const initialValue = "Test";
     render(<SearchForm initialValue={initialValue} />);
-    const inputElement = screen.getByRole("textbox");
+    const inputElement = screen.getByTestId("search-input");
     const inputValue = inputElement.value;
     expect(inputValue).toBe(initialValue);
   });
   test("Should onChange fire with right value when clicked submit after typing", () => {
     const mockOnSearch = jest.fn((e) => e.preventDefault());
-    const changedValue = "Javascript";
+    const mockedChangedValue = "Javascript";
 
     render(<SearchForm onSearch={mockOnSearch} />);
 
     const input = screen.getByTestId("search-input");
     const button = screen.getByTestId("search-button");
 
-    userEvent.type(input, changedValue);
+    userEvent.type(input, mockedChangedValue);
     userEvent.click(button);
 
     // This part doesn't work, I didn't find a way to pass an event argument
@@ -30,7 +30,7 @@ describe("SearchForm Component Functionality", () => {
     // expect(mockOnSearch).toHaveBeenCalledWith(
     //     expect.objectContaining({
     //       target: {
-    //         value: {changedValue}
+    //         value: {mockedChangedValue}
     //       }
     //     })
     //   );
@@ -41,14 +41,14 @@ describe("SearchForm Component Functionality", () => {
 
   test("Should onChange fire with right value when clicked enter after typing", () => {
     const mockOnSearch = jest.fn((e) => e.preventDefault());
-    const changedValue = "Javascript";
+    const mockedChangedValue = "Javascript";
 
     render(<SearchForm onSearch={mockOnSearch} />);
 
     const input = screen.getByTestId("search-input");
     
 
-    userEvent.type(input, changedValue);
+    userEvent.type(input, mockedChangedValue);
     keyboard("Enter");
 
     expect(mockOnSearch).toBeCalled();
@@ -58,7 +58,7 @@ describe("SearchForm Component Functionality", () => {
     // expect(mockOnChange).toHaveBeenCalledWith(
     //     expect.objectContaining({
     //       target: {
-    //         value: {changedValue}
+    //         value: {mockedChangedValue}
     //       }
     //     })
     //   );
