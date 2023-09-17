@@ -6,14 +6,14 @@ import { SearchForm } from "./SearchForm";
 
 describe("SearchForm Component Functionality", () => {
   test("Should Render Initial Value", () => {
-    const initialValue = "Test";
+    const mockedInitialValue = "Test";
 
-    render(<SearchForm initialValue={initialValue} />);
+    render(<SearchForm initialValue={mockedInitialValue} />);
 
     const inputElement = screen.getByTestId("search-input");
     const inputValue = inputElement.value;
 
-    expect(inputValue).toBe(initialValue);
+    expect(inputValue).toBe(mockedInitialValue);
   });
   test("Should onChange fire with right value when clicked submit after typing", () => {
     const mockOnSearch = jest.fn();

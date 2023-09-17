@@ -7,56 +7,61 @@ import userEvent from "@testing-library/user-event";
 
 describe("SelectTab Component Functionality", () => {
   test("Should Render All Genres", () => {
-    const onChange = jest.fn();
+    const mockedOnChange = jest.fn();
+
     render(
       <SelectTabs
         genres={genresList}
-        onSelect={onChange}
+        onSelect={mockedOnChange}
         selectedGenre={genresList[0]}
       />
     );
+
     genresList.forEach((genre) => {
       const genreElement = screen.getByText(genre.value);
       expect(genreElement).toBeInTheDocument();
     });
   });
   test("Should highlight a component with selected genre passed in props", () => {
-    const onChange = jest.fn();
-    const selectedTab = genresList[0];
+    const mockedOnChange = jest.fn();
+    const mockedSelectedTab = genresList[0];
+
     render(
       <SelectTabs
         genres={genresList}
-        onSelect={onChange}
-        selectedGenre={selectedTab}
+        onSelect={mockedOnChange}
+        selectedGenre={mockedSelectedTab}
       />
     );
+
     genresList.forEach((genre) => {
       const activeElement = screen.getByText(genre.value);
-      if (genre.value === selectedTab.value) {
+      if (genre.value === mockedSelectedTab.value) {
         expect(activeElement).toBeChecked;
       } else {
         expect(activeElement).not.toBeChecked;
       }
       const genreElement = screen.getByText(genre.value);
+
       expect(genreElement).toBeInTheDocument();
     });
   });
   test("click event on a genre button component should call onChange callback and passes correct genre in arguments", () => {
-    const onChange = jest.fn();
-    const selectedTab = genresList[0];
-    const willBeClickedTab = genresList[1];
+    const mockedOnChange = jest.fn();
+    const mockedSelectedTab = genresList[0];
+    const mockedClickedTab = genresList[1];
+
     render(
         <SelectTabs
           genres={genresList}
-          onSelect={onChange}
-          selectedGenre={selectedTab}
+          onSelect={mockedOnChange}
+          selectedGenre={mockedSelectedTab}
         />
       );
 
-    const willBeClickedElement = screen.getByText(willBeClickedTab.value);
+    const clickedElement = screen.getByText(mockedClickedTab.value);
+    userEvent.click(clickedElement);
 
-    userEvent.click(willBeClickedElement);
-
-    expect(onChange).toBeCalled();
+    expect(mockedOnChange).toBeCalled();
   });
 });
