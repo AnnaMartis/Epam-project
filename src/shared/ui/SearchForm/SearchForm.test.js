@@ -4,8 +4,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchForm } from "./SearchForm";
 
-describe("SearchForm Component Functionality", () => {
-  test("Should Render Initial Value", () => {
+describe("SearchForm component functionality", () => {
+  test("Should render initial value", () => {
     const mockedInitialValue = "Test";
 
     render(<SearchForm initialValue={mockedInitialValue} />);
@@ -15,7 +15,7 @@ describe("SearchForm Component Functionality", () => {
 
     expect(inputValue).toBe(mockedInitialValue);
   });
-  test("Should onChange fire with right value when clicked submit after typing", () => {
+  test("Should fire onChange with right value when clicked submit after typing", () => {
     const mockOnSearch = jest.fn();
     const mockedChangedValue = "Javascript";
 
@@ -30,7 +30,7 @@ describe("SearchForm Component Functionality", () => {
     expect(mockOnSearch).toHaveBeenCalledWith(mockedChangedValue);
   });
 
-  test("Should onChange fire with right value when clicked enter after typing", () => {
+  test("Should fire onChange with right value when clicked enter after typing", () => {
     const mockOnSearch = jest.fn();
     const mockedChangedValue = "Javascript";
 

@@ -5,8 +5,8 @@ import { SelectTabs } from "./SelectTabs";
 import { genresList } from "./selectTabsMock";
 import userEvent from "@testing-library/user-event";
 
-describe("SelectTab Component Functionality", () => {
-  test("Should Render All Genres", () => {
+describe("SelectTab component functionality", () => {
+  test("Should render all genres", () => {
     const mockedOnChange = jest.fn();
 
     render(
@@ -46,7 +46,7 @@ describe("SelectTab Component Functionality", () => {
       expect(genreElement).toBeInTheDocument();
     });
   });
-  test("click event on a genre button component should call onChange callback and passes correct genre in arguments", () => {
+  test("Should call onChange callback and passes correct genre in arguments", () => {
     const mockedOnChange = jest.fn();
     const mockedSelectedTab = genresList[0];
     const mockedClickedTab = genresList[1];

@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Counter } from "./Counter";
 
-describe("Counter Component Functionality", () => {
+describe("Counter component functionality", () => {
   test("Should render initial value", () => {
     const mockedInitialValue = 5;
 
