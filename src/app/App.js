@@ -1,14 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import { Counter, SearchForm, SelectTabs } from "../shared/ui";
-import { genresList } from "../shared/ui/SelectTabs/selectTabsMock";
+import { Counter, SearchForm, SelectTabs } from "../shared/ui/index.jsx";
+import { genresList } from "../shared/ui/SelectTabs/selectTabsMock.js";
 
 export const App = () => {
   const [selectedGenre, setSelectedGenre] = useState("ALL");
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-  };
+  const handleSearch = (searchValue) => {};
 
   const handleChangeSelectedGenre = (event) => {
     setSelectedGenre(event.target.value);
