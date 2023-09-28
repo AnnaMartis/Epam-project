@@ -6,9 +6,7 @@ import { genresList } from "../shared/ui/SelectTabs/selectTabsMock.js";
 export const App = () => {
   const [selectedGenre, setSelectedGenre] = useState("ALL");
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-  };
+  const handleSearch = (searchValue) => {};
 
   const handleChangeSelectedGenre = (event) => {
     setSelectedGenre(event.target.value);
@@ -18,7 +16,7 @@ export const App = () => {
       <Counter initialValue={5} />
       <SearchForm
         initialValue={""}
-        onChange={handleSearch}
+        onSearch={handleSearch}
         placeholder={"What do you want to search?"}
       />
       <SelectTabs

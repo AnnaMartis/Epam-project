@@ -3,64 +3,44 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchForm } from "./SearchForm";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
-describe("SearchForm Component Functionality", () => {
-  test("Should Render Initial Value", () => {
-    const initialValue = "Test";
-    render(<SearchForm initialValue={initialValue} />);
-    const inputElement = screen.getByRole("textbox");
+describe("SearchForm component functionality", () => {
+  test("Should render initial value", () => {
+    const mockedInitialValue = "Test";
+
+    render(<SearchForm initialValue={mockedInitialValue} />);
+
+    const inputElement = screen.getByTestId("search-input");
     const inputValue = inputElement.value;
-    expect(inputValue).toBe(initialValue);
+
+    expect(inputValue).toBe(mockedInitialValue);
   });
-  test("Should onChange fire with right value when clicked submit after typing", () => {
-    const mockOnChange = jest.fn((e) => e.preventDefault());
-    const changedValue = "Javascript";
+  test("Should fire onChange with right value when clicked submit after typing", () => {
+    const mockOnSearch = jest.fn();
+    const mockedChangedValue = "Javascript";
 
-    render(<SearchForm onChange={mockOnChange} />);
+    render(<SearchForm onSearch={mockOnSearch} />);
 
-    const input = screen.getByRole("textbox");
-    const button = screen.getByRole("button");
+    const input = screen.getByTestId("search-input");
+    const button = screen.getByTestId("search-button");
 
-    userEvent.type(input, changedValue);
+    userEvent.type(input, mockedChangedValue);
     userEvent.click(button);
 
-    // This part doesn't work, I didn't find a way to pass an event argument
-
-    // expect(mockOnChange).toHaveBeenCalledWith(
-    //     expect.objectContaining({
-    //       target: {
-    //         value: {changedValue}
-    //       }
-    //     })
-    //   );
-
-    // Proper Value doesn't check
-    expect(mockOnChange).toBeCalled();
+    expect(mockOnSearch).toHaveBeenCalledWith(mockedChangedValue);
   });
 
-  test("Should onChange fire with right value when clicked enter after typing", () => {
-    const mockOnChange = jest.fn((e) => e.preventDefault());
-    const changedValue = "Javascript";
+  test("Should fire onChange with right value when clicked enter after typing", () => {
+    const mockOnSearch = jest.fn();
+    const mockedChangedValue = "Javascript";
 
-    render(<SearchForm onChange={mockOnChange} />);
+    render(<SearchForm onSearch={mockOnSearch} />);
 
-    const input = screen.getByRole("textbox");
-    // const button = screen.getByRole("button");
+    const input = screen.getByTestId("search-input");
 
-    userEvent.type(input, changedValue);
-    keyboard("Enter");
+    userEvent.type(input, mockedChangedValue);
+    userEvent.type(input, '{enter}');
 
-    expect(mockOnChange).toBeCalled();
-
-    // This part doesn't work, I didn't find a way to pass an event argument
-
-    // expect(mockOnChange).toHaveBeenCalledWith(
-    //     expect.objectContaining({
-    //       target: {
-    //         value: {changedValue}
-    //       }
-    //     })
-    //   );
+    expect(mockOnSearch).toHaveBeenCalledWith(mockedChangedValue);
   });
 });
