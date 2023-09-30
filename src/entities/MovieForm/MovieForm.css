@@ -1,0 +1,66 @@
+.movie-form {
+    padding: 30px 0 0 0;
+}
+
+
+.movie-body-blocks{
+    display: flex;
+    gap: 10px;
+}
+
+.first-block {
+    width: 60%;;
+}
+
+.second-block {
+    width: 40%;
+}
+
+
+.block-item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.block-item label{
+    color: #F65261;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.block-item  .field{
+    background-color: #555555;
+    border: none;
+    padding: 6px;
+    color: white;
+    font-size: 16px;
+}
+
+
+.movie-footer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.movie-reset-button{
+    padding: 7px 16px;
+    cursor: pointer;
+    color: #F65261;
+    font-size: 16px;
+    border: .1px solid #F65261;
+    font-weight: 500;
+
+}
+
+.movie-submit-button{
+    padding: 7px 16px;
+    cursor: pointer;
+    background-color: #F65261;
+    border: .1px solid #F65261;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
