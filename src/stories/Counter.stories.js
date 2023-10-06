@@ -12,5 +12,6 @@ export const Default = Template.bind({});
 export const WithInitialState = Template.bind({});
 
 WithInitialState.args = {
-  initialValue: 10
-}
+  initialValue: 10,
+};
+

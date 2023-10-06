@@ -33,7 +33,7 @@
     cursor: pointer;
   }
   
-  .context-menu .items.active {
+  .context-menu .items {
     width: 100px;
     height: 70px;
     background-color: white;

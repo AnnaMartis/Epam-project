@@ -23,8 +23,7 @@ export const MovieTitle = ({ movieTitle }) => {
         />
         <div
           className={cx("items", {
-            active: isContextDropdownOpen,
-            hidden: !isContextDropdownOpen
+            hidden: !isContextDropdownOpen,
           })}
         >
           <p>Edit</p>
@@ -46,3 +45,6 @@ export const MovieTitle = ({ movieTitle }) => {
     </div>
   );
 };
+
+
+
