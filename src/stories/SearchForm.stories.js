@@ -1,4 +1,4 @@
-import { SearchForm } from "../shared/ui/";
+import { SearchForm } from "../entities/";
 
 export default {
   title: "SearchForm",

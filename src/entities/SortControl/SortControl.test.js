@@ -9,10 +9,24 @@ describe("SortControl Component Functionality", () => {
       <SortControl
         options={moviesSortOptions}
         selectedOption={moviesSortOptions[0]}
-        onSelectCB={() => {}}
+        onSelect={() => {}}
       />
     );
     const element = screen.getByText(moviesSortOptions[0].label);
     expect(element).toBeInTheDocument();
+  });
+  test("Should onSelect be be fired whenever an option is selected", () => {
+    const mockOnSelect = jest.fn();
+    const { getByTestId } = render(
+      <SortControl
+        options={moviesSortOptions}
+        selectedOption={moviesSortOptions[0]}
+        onSelect={() => {}}
+      />
+    );
+
+    const select = getByTestId('sort-select');
+    fireEvent.change(select, { target: { value: moviesSortOptions[2] } });
+    expect(mockOnSelect).toHaveBeenCalled();
   });
 });

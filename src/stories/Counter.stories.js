@@ -1,4 +1,4 @@
-import { Counter } from "../shared/ui/";
+import { Counter } from "../entities/";
 
 export default {
   title: "Counter",
@@ -9,6 +9,8 @@ const Template = (args) => <Counter {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
-  initialValue: 10,
-};
+export const WithInitialState = Template.bind({});
+
+WithInitialState.args = {
+  initialValue: 10
+}
