@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import { Counter, SearchForm, SelectTabs } from "../shared/ui/index.jsx";
-import { genresList } from "../shared/ui/SelectTabs/selectTabsMock.js";
+
+import { genresList } from "../entities/SelectTabs/selectTabsMock.js";
+import { Counter, SearchForm, SelectTabs } from "../entities/index.jsx";
 
 export const App = () => {
   const [selectedGenre, setSelectedGenre] = useState("ALL");
