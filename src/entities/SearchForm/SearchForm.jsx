@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./SearchForm.css";
+import { CustomButton } from "../../shared/ui/CustomButton/CustomButton";
 
 export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
   const [searchValue, setSearchValue] = useState(initialValue);
@@ -19,7 +20,7 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
   };
 
   return (
-    <form className="search" onSubmit={()=> onSearch(searchValue)}>
+    <form className="search" onSubmit={() => onSearch(searchValue)}>
       <input
         type="text"
         data-testid="search-input"
@@ -30,13 +31,12 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
         onFocus={onSearch}
         placeholder={placeholder}
       />
-      <button
+      <CustomButton
         data-testid="search-button"
-        className="search-button"
+        className="contained-button"
         type="submit"
-      >
-        SEARCH
-      </button>
+        label="SEARCH"
+      />
     </form>
   );
 };

@@ -1,5 +1,5 @@
 import { MovieForm } from "../entities/MovieForm/MovieForm";
-import { Dialog } from "../shared/ui";
+import { Dialog } from "../entities";
 
 export default{
     title: "AddMovie",

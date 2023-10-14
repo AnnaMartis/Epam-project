@@ -1,10 +1,7 @@
-selector-wrapper {
-  position: relative;
-}
-
 .selector {
   display: flex;
   gap: 20px;
+  color: white;
 }
 
 .selector-item {
@@ -28,11 +25,4 @@ selector-wrapper {
   height: 4px;
 }
 
-.bottom-line {
-  margin: 0;
-  position: absolute;
-  width: 80%;
-  height: 1px;
-  top: 406px;
-}
 
