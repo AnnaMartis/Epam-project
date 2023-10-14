@@ -1,18 +1,21 @@
 import "./MoviesListPage.css";
-import { useSearchParams } from "react-router-dom";
+import {
+  useSearchParams,
+  createSearchParams,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
-import { SearchForm } from "../../entities/SearchForm/SearchForm";
 import { SelectTabs } from "../../entities/SelectTabs/SelectTabs";
 import { genresList } from "../../entities/SelectTabs/selectTabsMock";
-import { CustomButton } from "../../shared/ui/CustomButton/CustomButton";
-import { MovieDetails, MovieTitle, SortControl } from "../../entities";
+import { MovieTitle, SortControl } from "../../entities";
 import { moviesSortOptions } from "../../entities/SortControl/sortControlMock";
 
 export const MovieListPage = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [sortCriterion, setSortCriterion] = useState(
@@ -20,9 +23,9 @@ export const MovieListPage = () => {
       (option) => option.value === searchParams.get("sort")
     ) || moviesSortOptions[0]
   );
-  const [selectedGenre, setSelectedGenre] = useState(searchParams.get('genre') ||"ALL");
-
-
+  const [selectedGenre, setSelectedGenre] = useState(
+    searchParams.get("genre") || "ALL"
+  );
 
   const handleSearch = (searchValue) => {
     setSearchQuery(searchValue);
@@ -48,12 +51,12 @@ export const MovieListPage = () => {
     });
   };
 
-  const handleMovieTitleClick = (movieProps) => {
-    setSelectedMovie(movieProps);
-  };
-
-  const handleMovieViewClosed = () => {
-    setSelectedMovie(null);
+  const handleMovieClick = (id) => {
+    const prevParams = Object.fromEntries(searchParams.entries());
+    navigate({
+      pathname: `/${id}`,
+      search: createSearchParams(prevParams).toString(),
+    });
   };
 
   useEffect(() => {
@@ -94,27 +97,9 @@ export const MovieListPage = () => {
   return (
     <div className="list-page">
       <div className="list-page-upper">
-        {!selectedMovie && (
-          <>
-            <div className="add-movie-part">
-              <CustomButton className="outlined-button" label="+ADD MOVIE" />
-            </div>
-            <div className="find-movie-part">
-              <p className="find-movie-title">FIND YOUR MOVIE</p>
-              <SearchForm
-                initialValue={searchParams.get("search") || ""}
-                onSearch={handleSearch}
-                placeholder={"What do you want to search?"}
-              />
-            </div>
-          </>
-        )}
-        {selectedMovie && (
-          <MovieDetails
-            movie={selectedMovie}
-            handleMovieViewClosed={handleMovieViewClosed}
-          />
-        )}
+        <Outlet
+          context={{ searchParam: searchParams.get("search"), handleSearch }}
+        />
       </div>
       <div className="list-page-lower">
         <div className="config-list-part">
@@ -139,17 +124,9 @@ export const MovieListPage = () => {
                   movieTitle={{
                     movieName: movie.title,
                     releaseYear: movie.release_date,
-                    onClick: () =>
-                      handleMovieTitleClick({
-                        imgUrl: movie.poster_path,
-                        movieName: movie.title,
-                        releaseYear: movie.release_date,
-                        rating: movie.vote_average,
-                        duration: movie.runtime,
-                        description: movie.overview,
-                      }),
                     genres: movie.genres,
                     imgUrl: movie.poster_path,
+                    onClick: () => handleMovieClick(movie.id),
                   }}
                 />
               );
