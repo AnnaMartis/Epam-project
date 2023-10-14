@@ -1,4 +1,5 @@
 import "./MoviesListPage.css";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SearchForm } from "../../entities/SearchForm/SearchForm";
 import { SelectTabs } from "../../entities/SelectTabs/SelectTabs";
@@ -8,23 +9,43 @@ import { MovieDetails, MovieTitle, SortControl } from "../../entities";
 import { moviesSortOptions } from "../../entities/SortControl/sortControlMock";
 
 export const MovieListPage = () => {
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortCriterion, setSortCriterion] = useState(moviesSortOptions[0]);
-  const [selectedGenre, setSelectedGenre] = useState("ALL");
+  const [sortCriterion, setSortCriterion] = useState(
+    moviesSortOptions.find(
+      (option) => option.value === searchParams.get("sort")
+    ) || moviesSortOptions[0]
+  );
+  const [selectedGenre, setSelectedGenre] = useState(searchParams.get('genre') ||"ALL");
+
+
 
   const handleSearch = (searchValue) => {
     setSearchQuery(searchValue);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, search: searchValue };
+    });
   };
 
   const handleChangeSelectedGenre = (event) => {
     setSelectedGenre(event.target.value);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, genre: event.target.value };
+    });
   };
 
   const handleChangeSortCriterion = (event) => {
     setSortCriterion(event.target.value);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, sort: event.target.value };
+    });
   };
 
   const handleMovieTitleClick = (movieProps) => {
@@ -81,7 +102,7 @@ export const MovieListPage = () => {
             <div className="find-movie-part">
               <p className="find-movie-title">FIND YOUR MOVIE</p>
               <SearchForm
-                initialValue={""}
+                initialValue={searchParams.get("search") || ""}
                 onSearch={handleSearch}
                 placeholder={"What do you want to search?"}
               />
