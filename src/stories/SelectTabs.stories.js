@@ -1,5 +1,5 @@
-import { SelectTabs } from "../shared/ui/";
-import { genresList } from "../shared/ui/SelectTabs/selectTabsMock";
+import { SelectTabs } from "../entities";
+import { genresList } from "../entities/SelectTabs/selectTabsMock";
 
 export default {
   title: "SelectTabs",

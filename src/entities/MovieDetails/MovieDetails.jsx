@@ -1,13 +1,8 @@
 import "./MovieDetails.css";
 
-export const MovieDetails = ({
-  imgUrl,
-  movieName,
-  releaseYear,
-  rating,
-  duration,
-  description,
-}) => {
+export const MovieDetails = ({ movie }) => {
+  const { imgUrl, movieName, releaseYear, rating, duration, description } =
+    movie;
   return (
     <div className="movie-details">
       <div className="movie-image">

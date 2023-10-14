@@ -1,5 +1,5 @@
-import { SortControl } from "../shared/ui";
-import { moviesSortOptions } from "../shared/ui/SortControl/sortControlMock";
+import { SortControl } from "../entities";
+import { moviesSortOptions } from "../entities/SortControl/sortControlMock";
 
 export default {
   title: "SortControl",
@@ -13,5 +13,5 @@ export const Default = Template.bind({});
 Default.args = {
   options: moviesSortOptions,
   selectedOption: moviesSortOptions[1],
-  onSelectCB: () => {},
+  onSelect: () => {},
 };

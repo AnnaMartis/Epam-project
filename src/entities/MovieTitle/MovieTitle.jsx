@@ -2,30 +2,30 @@ import "./MovieTitle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import cx from "classnames";
 
-export const MovieTitle = ({
-  imgUrl,
-  movieName,
-  releaseYear,
-  genres,
-  onClickCB,
-}) => {
+export const MovieTitle = ({ movieTitle }) => {
+  const { imgUrl, movieName, releaseYear, genres, onClick } = movieTitle;
   const [isContextDropdownOpen, setContextDropdownOpen] = useState(false);
 
-  const handleToggleDropdown = () => {
+  const toggleDropdown = () => {
     setContextDropdownOpen((prevValue) => !prevValue);
   };
 
   return (
-    <div className="movie-title" onClick={onClickCB}>
+    <div className="movie-title" onClick={onClick}>
       <img src={imgUrl} alt="movie" className="movie-image" />
       <div className="context-menu">
         <FontAwesomeIcon
           icon={faEllipsisVertical}
           className="context-icon"
-          onClick={handleToggleDropdown}
+          onClick={toggleDropdown}
         />
-        <div className={`items ${isContextDropdownOpen ? "active" : "hidden"}`}>
+        <div
+          className={cx("items", {
+            hidden: !isContextDropdownOpen,
+          })}
+        >
           <p>Edit</p>
           <p>Delete</p>
         </div>
@@ -45,3 +45,6 @@ export const MovieTitle = ({
     </div>
   );
 };
+
+
+

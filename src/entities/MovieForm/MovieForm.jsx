@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MovieForm.css";
-import { genresList } from "../../shared/ui/SelectTabs/selectTabsMock";
+import { genresList } from "../../entities/SelectTabs/selectTabsMock";
 
 export const MovieForm = ({ initialMovie, onFormSubmit }) => {
   const [movie, setMovie] = useState({

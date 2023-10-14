@@ -1,20 +1,20 @@
 import { MovieTitle } from "../entities";
 
 export default {
-    title: "MovieTitle",
-    component: MovieTitle,
-  };
+  title: "MovieTitle",
+  component: MovieTitle,
+};
 
+const Template = (args) => <MovieTitle {...args} />;
 
-  const Template = (args) => <MovieTitle {...args} />;
+export const Default = Template.bind({});
 
-  export const Default = Template.bind({});
-
-  Default.args = {
+Default.args = {
+  movieTitle: {
     movieName: "Pulp Fiction",
     releaseYear: 2004,
-    onClickCB: ()=>{},
+    onClick: () => {},
     genres: ["Action & Adventure"],
-    imgUrl:"https://via.placeholder.com/300/92c952",
-  };
-  
+    imgUrl: "https://via.placeholder.com/300/92c952",
+  },
+};

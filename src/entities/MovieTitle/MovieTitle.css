@@ -3,51 +3,48 @@
     background-color: #232323;
     color: white;
     position: relative;
-}
-
-.movie-title  .title {
+  }
+  
+  .movie-title .title {
     display: flex;
     justify-content: space-between;
     padding: 0 4px;
-}
-
-.movie-title  .title .movie-name {
+  }
+  
+  .movie-title .title .movie-name {
     font-weight: 600;
     font-size: 18px;
-}
-
-.movie-title  .title .release-year{
-    border: .1px solid white;
+  }
+  
+  .movie-title .title .release-year {
+    border: 0.1px solid white;
     padding: 2px;
-}
-
-
-.movie-title .genres {
+  }
+  
+  .movie-title .genres {
     padding: 0 4px;
-}
-
-.context-menu{
+  }
+  
+  .context-menu {
     color: white;
     position: absolute;
     top: 5%;
     left: 5%;
     cursor: pointer;
-}
-
-.context-menu .items.active{
+  }
+  
+  .context-menu .items {
     width: 100px;
     height: 70px;
     background-color: white;
     color: black;
     padding: 4px;
-}
-
-
-.context-menu .items.hidden{
-   display: none;
-}
-
-
-.context-menu .items p:hover{
+  }
+  
+  .context-menu .items.hidden {
+    display: none;
+  }
+  
+  .context-menu .items p:hover {
     background-color: antiquewhite;
-}
+  }
