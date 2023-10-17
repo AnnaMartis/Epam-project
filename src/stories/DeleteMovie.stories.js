@@ -1,4 +1,3 @@
-import { MovieForm } from "../entities/MovieForm/MovieForm";
 import { Dialog } from "../shared/ui";
 
 export default {
