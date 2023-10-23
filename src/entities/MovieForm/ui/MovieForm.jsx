@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./MovieForm.css";
-import { genresList } from "../../entities/SelectTabs/selectTabsMock";
+import { genresList } from "../../../entities/SelectTabs/selectTabsMock";
+import { getMovie } from "../lib/getMovie";
 
 export const MovieForm = ({ initialMovie, onFormSubmit }) => {
-  const [movie, setMovie] = useState(initialMovie);
+  const [movie, setMovie] = useState(getMovie(initialMovie));
 
   const handleFieldChange = (event) => {
     setMovie((prevMovie) => ({
