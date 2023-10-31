@@ -62,13 +62,13 @@ export const MovieListPage = () => {
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:4000?sortBy=${
-            sortCriterion.value
-          }?search=${searchQuery}?filter=${[selectedGenre]}`
-        );
-        const json = await response.json();
-        const data = JSON.stringify(json);
+        const queryParams = new URLSearchParams({
+          sortBy: sortCriterion.value,
+          search: searchQuery,
+          filter: [selectedGenre],
+        });
+        const response = await fetch(`http://localhost:4000?${queryParams}`);
+        const data = await response.json();
         setMovies(data.data);
       } catch (error) {
         console.error(error);

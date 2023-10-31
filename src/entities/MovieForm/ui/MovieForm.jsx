@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import "./MovieForm.css";
-import { genresList } from "../../entities/SelectTabs/selectTabsMock";
+import { genresList } from "../../../entities/SelectTabs/selectTabsMock";
+import { getMovie } from "../lib/getMovie";
 
 export const MovieForm = ({ initialMovie, onFormSubmit }) => {
-  const [movie, setMovie] = useState({
-    title: initialMovie?.title ?? "",
-    movieUrl: initialMovie?.movieUrl ?? "",
-    genre: initialMovie?.genre ?? "",
-    overview: initialMovie?.overview ?? "",
-    releaseDate: initialMovie?.releaseDate ?? "",
-    rating: initialMovie?.rating ?? "",
-    runtime: initialMovie?.runtime ?? "",
-    overview: initialMovie?.overview ?? "",
-  });
+  const [movie, setMovie] = useState(getMovie(initialMovie));
 
   const handleFieldChange = (event) => {
     setMovie((prevMovie) => ({
@@ -22,7 +14,7 @@ export const MovieForm = ({ initialMovie, onFormSubmit }) => {
   };
 
   return (
-    <form className="movie-form" action="#">
+    <form className="movie-form" action="#" onSubmit={onFormSubmit}>
       <div className="movie-body">
         <div className="movie-body-blocks">
           <div className="first-block">
@@ -33,7 +25,7 @@ export const MovieForm = ({ initialMovie, onFormSubmit }) => {
                 type="text"
                 id="title"
                 name="title"
-                value={movie.title}
+                value={movie.title }
                 onChange={handleFieldChange}
               />
             </div>
@@ -44,13 +36,13 @@ export const MovieForm = ({ initialMovie, onFormSubmit }) => {
                 type="text"
                 id="movieUrl"
                 name="movieUrl"
-                value={movie.movieUrl}
+                value={movie.movieUrl }
                 onChange={handleFieldChange}
               />
             </div>
             <div className="block-item">
               <label htmlFor="genre">Genre</label>
-              <select className="field" id="genre" value={movie.genre} name={'genre'} onChange={handleFieldChange}>
+              <select className="field" id="genre" value={movie.genre } name='genre' onChange={handleFieldChange}>
                 {genresList.map((genreItem)=>{
                    return <option key={genreItem.id}>{genreItem.value}</option>
                 })}
@@ -87,7 +79,7 @@ export const MovieForm = ({ initialMovie, onFormSubmit }) => {
                 type="text"
                 id="runtime"
                 name="runtime"
-                value={movie.runtime}
+                value={movie.runtime }
                 onChange={handleFieldChange}
               />
             </div>
@@ -100,7 +92,7 @@ export const MovieForm = ({ initialMovie, onFormSubmit }) => {
             type="text"
             id="overview"
             name="overview"
-            value={movie.overview}
+            value={movie.overview }
             onChange={handleFieldChange}
             cols="30"
             rows="5"

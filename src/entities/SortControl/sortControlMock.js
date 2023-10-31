@@ -1,6 +1,6 @@
 export const moviesSortOptions = [
   {
-    value: "release_date",
+    value: "releaseDate",
     label: "Release Date",
   },
   {

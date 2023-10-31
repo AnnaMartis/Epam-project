@@ -45,7 +45,6 @@ export const MovieDetails = ({
       search: createSearchParams(prevParams).toString(),
     });
   };
-
   return (
     <div className="movie-details">
       <div className="movie-image">
@@ -57,9 +56,7 @@ export const MovieDetails = ({
             <p className="name">{movieName}</p>
             <p className="rating">{rating}</p>
           </div>
-          <p className="movie-close" onClick={handleMovieClose}>
-            X
-          </p>
+          <button className="movie-close" onClick={handleMovieClose}>X</button>
         </div>
 
         <div className="movie-specs">
