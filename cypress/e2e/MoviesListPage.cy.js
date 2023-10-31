@@ -18,10 +18,4 @@ describe("Movies List Page", () => {
     cy.get(".movie-details").should("be.visible");
     cy.get(".search-form").should("not.exist");
   });
-
-//   it("should go back to the movie list when the close button is clicked", () => {
-//     cy.get(".movie-close").click();
-//     cy.get(".search-form").should("be.visible");
-//   });
-
 });

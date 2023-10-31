@@ -1,7 +1,6 @@
 import "./MovieDetails.css";
 
 export const MovieDetails = ({ movie, handleMovieViewClosed }) => {
-  console.log("movieee", movie);
 
   const { imgUrl, movieName, releaseYear, rating, duration, description } =
     movie;
@@ -16,7 +15,7 @@ export const MovieDetails = ({ movie, handleMovieViewClosed }) => {
             <p className="name">{movieName}</p>
             <p className="rating">{rating}</p>
           </div>
-          <p className="movie-close" onClick={handleMovieViewClosed}>X</p>
+          <button className="movie-close" onClick={handleMovieViewClosed}>X</button>
         </div>
 
         <div className="movie-specs">
