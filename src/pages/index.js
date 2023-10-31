@@ -1,1 +1,1 @@
-export {MoviesListPage} from './MovieListPage/MoviesListPage.jsx'
+export { MoviesListPage } from "./MovieListPage/MoviesListPage.jsx";
