@@ -3,7 +3,6 @@ import cx from "classnames";
 
 export const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
   return (
-    <div className="selector-wrapper">
       <div className="selector">
         {genres?.map((genre) => {
           return (
@@ -29,7 +28,5 @@ export const SelectTabs = ({ genres = [], selectedGenre, onSelect }) => {
           );
         })}
       </div>
-      <hr className="bottom-line" />
-    </div>
   );
 };

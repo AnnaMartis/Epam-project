@@ -12,6 +12,18 @@
 }
 
 
+.movie-details  .movie-content .movie-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.movie-details  .movie-content .movie-title-wrapper .movie-close{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
 .movie-details  .movie-content .movie-title {
     display: flex;
     gap: 15px;
