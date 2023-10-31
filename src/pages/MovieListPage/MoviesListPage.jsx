@@ -21,10 +21,10 @@ export const MovieListPage = () => {
   const [sortCriterion, setSortCriterion] = useState(
     moviesSortOptions.find(
       (option) => option.value === searchParams.get("sort")
-    ) || moviesSortOptions[0]
+    ) ?? moviesSortOptions[0]
   );
   const [selectedGenre, setSelectedGenre] = useState(
-    searchParams.get("genre") || "ALL"
+    searchParams.get("genre") ?? "ALL"
   );
 
   const handleSearch = (searchValue) => {

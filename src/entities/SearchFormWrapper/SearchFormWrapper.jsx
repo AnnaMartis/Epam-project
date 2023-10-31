@@ -13,9 +13,9 @@ export const SearchFormWrapper = () => {
       <div className="find-movie-part">
         <p className="find-movie-title">FIND YOUR MOVIE</p>
         <SearchForm
-          initialValue={searchParam || ""}
+          initialValue={searchParam ?? ""}
           onSearch={handleSearch}
-          placeholder={"What do you want to search?"}
+          placeholder="What do you want to search?"
         />
       </div>
     </>
