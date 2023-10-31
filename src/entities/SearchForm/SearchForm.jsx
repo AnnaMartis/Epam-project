@@ -22,15 +22,17 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
   const handleInputFocus = (event) => {
     event.preventDefault();
     onSearch(searchValue);
-  }
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchValue);
+  };
 
   return (
     <form
       className="search"
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSearch(searchValue);
-      }}
+      onSubmit={handleFormSubmit}
     >
       <input
         type="text"
