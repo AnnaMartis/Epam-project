@@ -122,6 +122,7 @@ export const MovieListPage = () => {
                 <MovieTitle
                   key={movie.id}
                   movieTitle={{
+                    id:movie.id,
                     movieName: movie.title,
                     releaseYear: movie.release_date,
                     genres: movie.genres,

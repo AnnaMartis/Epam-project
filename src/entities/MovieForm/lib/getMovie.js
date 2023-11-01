@@ -1,11 +1,11 @@
 export const getMovie = (movie) => {
     return ({
-        title: movie?.title ?? "",
-        movieUrl: movie?.movieUrl ?? "",
+        title: movie?.title ?? movie?.movieName ?? "",
+        movieUrl: movie?.movieUrl ?? movie?.imgUrl ?? "",
         genre: movie?.genre ?? "ALL",
-        overview: movie?.overview ?? "",
-        releaseDate: movie?.releaseDate ?? "",
+        overview: movie?.overview ?? movie?.description ?? "",
+        releaseDate: movie?.releaseDate ?? movie?.releaseYear ?? "",
         rating: movie?.rating ?? "",
-        runtime: movie?.runtime ?? "",
+        runtime: movie?.runtime ?? movie?.duration ?? "",
       })
 }

@@ -6,6 +6,7 @@ import {
   createSearchParams,
   useNavigate,
 } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export const MovieDetails = ({
   movie = {
@@ -45,28 +46,34 @@ export const MovieDetails = ({
       search: createSearchParams(prevParams).toString(),
     });
   };
-  return (
-    <div className="movie-details">
-      <div className="movie-image">
-        <img src={imgUrl} alt="movie" />
-      </div>
-      <div className="movie-content">
-        <div className="movie-title-wrapper">
-          <div className="movie-title">
-            <p className="name">{movieName}</p>
-            <p className="rating">{rating}</p>
-          </div>
-          <button className="movie-close" onClick={handleMovieClose}>X</button>
-        </div>
 
-        <div className="movie-specs">
-          <p>{releaseYear}</p>
-          <p>{duration}min</p>
+  return (
+    <>
+      <Outlet context={{movie}}/>
+      <div className="movie-details">
+        <div className="movie-image">
+          <img src={imgUrl} alt="movie" />
         </div>
-        <div className="movie-desc">
-          <p>{description}</p>
+        <div className="movie-content">
+          <div className="movie-title-wrapper">
+            <div className="movie-title">
+              <p className="name">{movieName}</p>
+              <p className="rating">{rating}</p>
+            </div>
+            <button className="movie-close" onClick={handleMovieClose}>
+              X
+            </button>
+          </div>
+
+          <div className="movie-specs">
+            <p>{releaseYear}</p>
+            <p>{duration}min</p>
+          </div>
+          <div className="movie-desc">
+            <p>{description}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

@@ -19,4 +19,6 @@
 
 .dialog-close{
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
