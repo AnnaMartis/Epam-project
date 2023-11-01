@@ -3,7 +3,7 @@ import "./Dialog.css";
 
 export const Dialog = ({ title, children, onClose}) => {
   return (
-    <Portal>
+    <Portal className="dialog-wrapper">
       <div className="dialog">
         <div className="dialog-close-section">
           <p className="dialog-close" onClick={onClose}>X</p>

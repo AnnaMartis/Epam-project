@@ -1,101 +1,156 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MovieForm.css";
 import { genresList } from "../../../entities/SelectTabs/selectTabsMock";
 import { getMovie } from "../lib/getMovie";
+import { useForm, Controller } from "react-hook-form";
 
-export const MovieForm = ({ initialMovie, onFormSubmit }) => {
-  const [movie, setMovie] = useState(getMovie(initialMovie));
+export const MovieForm = ({ initialMovie }) => {
+ 
+  const { handleSubmit, control } = useForm({
+    defaultValues: getMovie(initialMovie),
+  });
 
-  const handleFieldChange = (event) => {
-    setMovie((prevMovie) => ({
-      ...prevMovie,
-      [event.target.name]: event.target.value,
-    }));
-  };
+
+
+  const onFormSubmit = (data)=>{
+    if (initialMovie) {
+      console.log('send request to edit a movie')
+    } else {
+      console.log('send a request to add a new movie')
+    }
+  }
 
   return (
-    <form className="movie-form" action="#" onSubmit={onFormSubmit}>
+    <form className="movie-form" action="#" onSubmit={handleSubmit(onFormSubmit)}>
       <div className="movie-body">
         <div className="movie-body-blocks">
           <div className="first-block">
             <div className="block-item">
               <label htmlFor="title">Title</label>
-              <input
-                className="field"
-                type="text"
-                id="title"
+              <Controller
                 name="title"
-                value={movie.title }
-                onChange={handleFieldChange}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="text"
+                      id={field.name}
+                    />
+                  );
+                }}
               />
             </div>
             <div className="block-item">
               <label htmlFor="movieUrl">Movie URL</label>
-              <input
-                className="field"
-                type="text"
-                id="movieUrl"
+              <Controller
                 name="movieUrl"
-                value={movie.movieUrl }
-                onChange={handleFieldChange}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="text"
+                      id={field.name}
+                    />
+                  );
+                }}
               />
             </div>
             <div className="block-item">
               <label htmlFor="genre">Genre</label>
-              <select className="field" id="genre" value={movie.genre } name='genre' onChange={handleFieldChange}>
-                {genresList.map((genreItem)=>{
-                   return <option key={genreItem.id}>{genreItem.value}</option>
-                })}
-              </select>
+              <Controller
+                name="genre"
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <select className="field" id={field.name} {...field}>
+                      {genresList.map((genreItem) => {
+                        return (
+                          <option key={genreItem.id}>{genreItem.value}</option>
+                        );
+                      })}
+                    </select>
+                  );
+                }}
+              />
             </div>
           </div>
           <div className="second-block">
             <div className="block-item">
               <label htmlFor="releaseDate">Release Date</label>
-              <input
-                className="field"
-                type="date"
-                id="releaseDate"
+              <Controller
                 name="releaseDate"
-                value={movie.releaseDate}
-                onChange={handleFieldChange}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="date"
+                      id={field.name}
+                    />
+                  );
+                }}
               />
             </div>
+
             <div className="block-item">
               <label htmlFor="rating">Rating</label>
-              <input
-                className="field"
-                type="text"
-                id="rating"
+              <Controller
                 name="rating"
-                value={movie.rating}
-                onChange={handleFieldChange}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="number"
+                      id={field.name}
+                    />
+                  );
+                }}
               />
             </div>
+
             <div className="block-item">
               <label htmlFor="runtime">Runtime</label>
-              <input
-                className="field"
-                type="text"
-                id="runtime"
+              <Controller
                 name="runtime"
-                value={movie.runtime }
-                onChange={handleFieldChange}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="text"
+                      id={field.name}
+                    />
+                  );
+                }}
               />
             </div>
           </div>
         </div>
         <div className="block-item">
           <label htmlFor="overview">Overview</label>
-          <textarea
-            className="field"
-            type="text"
-            id="overview"
+          <Controller
             name="overview"
-            value={movie.overview }
-            onChange={handleFieldChange}
-            cols="30"
-            rows="5"
+            control={control}
+            render={({ field }) => {
+              return (
+                <textarea
+                  className="field"
+                  type="text"
+                  id={field.name}
+                  cols="30"
+                  rows="5"
+                  {...field}
+                />
+              );
+            }}
           />
         </div>
       </div>
