@@ -1,41 +1,62 @@
 import "./MoviesListPage.css";
+import {
+  useSearchParams,
+  createSearchParams,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SelectTabs } from "../../entities/SelectTabs/SelectTabs";
 import { genresList } from "../../entities/SelectTabs/selectTabsMock";
-import {
-  AddMovie,
-  MovieDetails,
-  MovieTitle,
-  SortControl,
-} from "../../entities";
+import { MovieTitle, SortControl } from "../../entities";
 import { moviesSortOptions } from "../../entities/SortControl/sortControlMock";
 
 export const MovieListPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortCriterion, setSortCriterion] = useState(moviesSortOptions[0]);
-  const [selectedGenre, setSelectedGenre] = useState("ALL");
+  const [sortCriterion, setSortCriterion] = useState(
+    moviesSortOptions.find(
+      (option) => option.value === searchParams.get("sort")
+    ) ?? moviesSortOptions[0]
+  );
+  const [selectedGenre, setSelectedGenre] = useState(
+    searchParams.get("genre") ?? "ALL"
+  );
 
   const handleSearch = (searchValue) => {
     setSearchQuery(searchValue);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, search: searchValue };
+    });
   };
 
   const handleChangeSelectedGenre = (event) => {
     setSelectedGenre(event.target.value);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, genre: event.target.value };
+    });
   };
 
   const handleChangeSortCriterion = (event) => {
     setSortCriterion(event.target.value);
+    setSearchParams((prevSearchParams) => {
+      const prevParams = Object.fromEntries(prevSearchParams.entries());
+      return { ...prevParams, sort: event.target.value };
+    });
   };
 
-  const handleMovieTitleClick = (movieProps) => {
-    setSelectedMovie(movieProps);
-  };
-
-  const handleMovieViewClosed = () => {
-    setSelectedMovie(null);
+  const handleMovieClick = (id) => {
+    const prevParams = Object.fromEntries(searchParams.entries());
+    navigate({
+      pathname: `/${id}`,
+      search: createSearchParams(prevParams).toString(),
+    });
   };
 
   useEffect(() => {
@@ -76,14 +97,9 @@ export const MovieListPage = () => {
   return (
     <div className="list-page">
       <div className="list-page-upper">
-        {selectedMovie ? (
-          <MovieDetails
-            movie={selectedMovie}
-            handleMovieViewClosed={handleMovieViewClosed}
-          />
-        ) : (
-          <AddMovie handleSearch={handleSearch} />
-        )}
+        <Outlet
+          context={{ searchParam: searchParams.get("search"), handleSearch }}
+        />
       </div>
       <div className="list-page-lower">
         <div className="config-list-part">
@@ -102,24 +118,15 @@ export const MovieListPage = () => {
           <p className="found-movies">{movies.length} movies found</p>
           <div className="movies-list">
             {movies?.map((movie) => {
-              const movieData = {
-                imgUrl: movie.poster_path,
-                movieName: movie.title,
-                releaseYear: movie.release_date,
-                rating: movie.vote_average,
-                duration: movie.runtime,
-                description: movie.overview,
-              };
               return (
                 <MovieTitle
                   key={movie.id}
                   movieTitle={{
                     movieName: movie.title,
                     releaseYear: movie.release_date,
-                    onClick: () =>
-                      handleMovieTitleClick(movieData),
                     genres: movie.genres,
                     imgUrl: movie.poster_path,
+                    onClick: () => handleMovieClick(movie.id),
                   }}
                 />
               );

@@ -19,8 +19,21 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
     }
   };
 
+  const handleInputFocus = (event) => {
+    event.preventDefault();
+    onSearch(searchValue);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchValue);
+  };
+
   return (
-    <form className="search" onSubmit={() => onSearch(searchValue)}>
+    <form
+      className="search"
+      onSubmit={handleFormSubmit}
+    >
       <input
         type="text"
         data-testid="search-input"
@@ -28,7 +41,7 @@ export const SearchForm = ({ initialValue = "", onSearch, placeholder }) => {
         value={searchValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
-        onFocus={onSearch}
+        onFocus={handleInputFocus}
         placeholder={placeholder}
       />
       <CustomButton
