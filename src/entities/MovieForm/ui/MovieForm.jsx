@@ -7,23 +7,40 @@ import { useForm, Controller } from "react-hook-form";
 
 export const MovieForm = ({ initialMovie }) => {
   const { movie } = useOutletContext() ?? {initialMovie};
-
+ 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: getMovie(movie),
   });
 
-  const onFormSubmit = (data) => {
-    if (movie) {
-      console.log("send request to edit a movie");
-    } else {
-      console.log("send a request to add a new movie");
+  const onFormSubmit = async (data) => {
+    try {
+      let requestOptions;
+      if (movie) {
+        requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+      } else {
+        requestOptions = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+      }
+      await fetch("http://localhost:4000", requestOptions);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
     <form
       className="movie-form"
-      action="#"
       onSubmit={handleSubmit(onFormSubmit)}
     >
       <div className="movie-body">
@@ -83,23 +100,23 @@ export const MovieForm = ({ initialMovie }) => {
             </div>
           </div>
           <div className="second-block">
-              <div className="block-item">
-                <label htmlFor="releaseDate">Release Date</label>
-                <Controller
-                  name="releaseDate"
-                  control={control}
-                  render={({ field }) => {
-                    return (
-                      <input
-                        {...field}
-                        className="field"
-                        type="date"
-                        id={field.name}
-                      />
-                    );
-                  }}
-                />
-              </div>
+            <div className="block-item">
+              <label htmlFor="releaseDate">Release Date</label>
+              <Controller
+                name="releaseDate"
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <input
+                      {...field}
+                      className="field"
+                      type="date"
+                      id={field.name}
+                    />
+                  );
+                }}
+              />
+            </div>
 
             <div className="block-item">
               <label htmlFor="rating">Rating</label>
@@ -159,7 +176,8 @@ export const MovieForm = ({ initialMovie }) => {
         </div>
       </div>
       <div className="movie-footer">
-        <input className="movie-reset-button" onClick={()=>reset(getMovie(movie))} type="button" value={"Reset"}/>
+        <button className="movie-reset-button"
+          onClick={() => reset(getMovie(movie))}>RESET</button>
         <button className="movie-submit-button" type="submit">
           SUBMIT
         </button>

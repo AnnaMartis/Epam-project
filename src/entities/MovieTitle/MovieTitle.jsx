@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import cx from "classnames";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const MovieTitle = ({ movieTitle }) => {
   const { imgUrl, movieName, releaseYear, genres, onClick } = movieTitle;
@@ -16,9 +16,12 @@ export const MovieTitle = ({ movieTitle }) => {
   return (
     <div className="movie-title" onClick={onClick}>
       <img src={imgUrl} alt="movie" className="movie-image" />
-      <div className="context-menu" onClick={(event)=>{
-        event.stopPropagation();
-      }}>
+      <div
+        className="context-menu"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
         <FontAwesomeIcon
           icon={faEllipsisVertical}
           className="context-icon"
@@ -48,6 +51,3 @@ export const MovieTitle = ({ movieTitle }) => {
     </div>
   );
 };
-
-
-

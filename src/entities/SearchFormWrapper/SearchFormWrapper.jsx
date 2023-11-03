@@ -1,25 +1,15 @@
-import { useOutletContext, useNavigate } from "react-router";
-import { CustomButton } from "../../shared/ui/CustomButton/CustomButton";
+import { useOutletContext } from "react-router";
 import { SearchForm } from "../SearchForm/SearchForm";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const SearchFormWrapper = () => {
   const { searchParam, handleSearch } = useOutletContext();
-  const navigate = useNavigate();
-
-  const handleAddMovieCLick = () => {
-    navigate("/new");
-  };
 
   return (
     <>
       <Outlet />
       <div className="add-movie-part">
-        <CustomButton
-          className="outlined-button"
-          label="+ADD MOVIE"
-          onClick={handleAddMovieCLick}
-        />
+        <Link to="/new" className="outlined-button">Add Movie</Link>
       </div>
       <div className="find-movie-part">
         <p className="find-movie-title">FIND YOUR MOVIE</p>
