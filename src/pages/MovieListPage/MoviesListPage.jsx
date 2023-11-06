@@ -10,6 +10,7 @@ import { SelectTabs } from "../../entities/SelectTabs/SelectTabs";
 import { genresList } from "../../entities/SelectTabs/selectTabsMock";
 import { MovieTitle, SortControl } from "../../entities";
 import { moviesSortOptions } from "../../entities/SortControl/sortControlMock";
+import { MAIN_API } from "../../app/config";
 
 export const MovieListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +68,7 @@ export const MovieListPage = () => {
           search: searchQuery,
           filter: [selectedGenre],
         });
-        const response = await fetch(`http://localhost:4000?${queryParams}`);
+        const response = await fetch(`${MAIN_API}?${queryParams}`);
         const data = await response.json();
         setMovies(data.data);
       } catch (error) {
@@ -122,6 +123,7 @@ export const MovieListPage = () => {
                 <MovieTitle
                   key={movie.id}
                   movieTitle={{
+                    id:movie.id,
                     movieName: movie.title,
                     releaseYear: movie.release_date,
                     genres: movie.genres,

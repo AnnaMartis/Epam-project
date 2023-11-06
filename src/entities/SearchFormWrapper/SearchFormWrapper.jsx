@@ -1,14 +1,15 @@
 import { useOutletContext } from "react-router";
-import { CustomButton } from "../../shared/ui/CustomButton/CustomButton";
 import { SearchForm } from "../SearchForm/SearchForm";
+import { Link, Outlet } from "react-router-dom";
 
 export const SearchFormWrapper = () => {
   const { searchParam, handleSearch } = useOutletContext();
 
   return (
     <>
+      <Outlet />
       <div className="add-movie-part">
-        <CustomButton className="outlined-button" label="+ADD MOVIE" />
+        <Link to="/new" className="outlined-button">Add Movie</Link>
       </div>
       <div className="find-movie-part">
         <p className="find-movie-title">FIND YOUR MOVIE</p>

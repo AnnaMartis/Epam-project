@@ -7,3 +7,4 @@ export { SortControl } from "./SortControl/SortControl";
 export { Dialog } from "./Dialog/Dialog";
 export { AddMovie } from "./AddMovie/AddMovie";
 export { SearchFormWrapper } from "./SearchFormWrapper/SearchFormWrapper";
+export { MovieForm } from "./MovieForm/ui/MovieForm";
