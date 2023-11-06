@@ -1,5 +1,5 @@
 import { Portal } from "react-portal";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dialog.css";
 
 export const Dialog = ({ title, children}) => {

@@ -15,15 +15,12 @@ export const MovieForm = ({ initialMovie }) => {
 
   const onFormSubmit = async (data) => {
     let requestOptions = {
-      method: "POST",
+      method: movie ? "POST" : "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     };
-    if (!movie) {
-      requestOptions.method = "PUT";  
-    } 
     try {   
       await fetch(MAIN_API, requestOptions);
     } catch (error) {

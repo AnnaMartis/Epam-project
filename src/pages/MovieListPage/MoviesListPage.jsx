@@ -68,7 +68,7 @@ export const MovieListPage = () => {
           search: searchQuery,
           filter: [selectedGenre],
         });
-        const response = await fetch(MAIN_API +`?${queryParams}`);
+        const response = await fetch(`${MAIN_API}?${queryParams}`);
         const data = await response.json();
         setMovies(data.data);
       } catch (error) {
