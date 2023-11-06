@@ -4,6 +4,7 @@ import "./MovieForm.css";
 import { genresList } from "../../../entities/SelectTabs/selectTabsMock";
 import { getMovie } from "../lib/getMovie";
 import { useForm, Controller } from "react-hook-form";
+import { MAIN_API } from "../../../app/config";
 
 export const MovieForm = ({ initialMovie }) => {
   const { movie } = useOutletContext() ?? {initialMovie};
@@ -13,26 +14,18 @@ export const MovieForm = ({ initialMovie }) => {
   });
 
   const onFormSubmit = async (data) => {
-    try {
-      let requestOptions;
-      if (movie) {
-        requestOptions = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        };
-      } else {
-        requestOptions = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        };
-      }
-      await fetch("http://localhost:4000", requestOptions);
+    let requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    if (!movie) {
+      requestOptions.method = "PUT";  
+    } 
+    try {   
+      await fetch(MAIN_API, requestOptions);
     } catch (error) {
       console.error(error);
     }
