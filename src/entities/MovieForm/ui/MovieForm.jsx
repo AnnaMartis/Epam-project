@@ -1,6 +1,4 @@
 "use client"
-// import React from "react";
-// import { useOutletContext } from "react-router";
 import "./MovieForm.css";
 import { genresList } from "../../../entities/SelectTabs/selectTabsMock";
 import { getMovie } from "../lib/getMovie";
