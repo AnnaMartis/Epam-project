@@ -1,0 +1,28 @@
+.selector {
+  display: flex;
+  gap: 20px;
+  color: white;
+}
+
+.selector-item {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.selector-radio {
+  display: none;
+}
+
+.selector-line {
+  height: 1px;
+  width: 100%;
+  margin: 10px 0 0 0;
+ 
+}
+
+.selector-line.active {
+  background-color: #f65261;
+  height: 4px;
+}
+
+

@@ -1,0 +1,24 @@
+.dialog{
+    background-color: #424242;
+    padding: 10px 20px;
+    color: white;
+    position: absolute;
+    top: 10%;
+    right: 30%;
+}
+
+.dialog-title {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.dialog-close-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialog-close{
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}

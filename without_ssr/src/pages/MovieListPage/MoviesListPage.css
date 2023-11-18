@@ -1,0 +1,52 @@
+.list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #424242;
+  height: 90vh;
+  padding: 40px 200px;
+}
+
+.list-page-upper {
+  flex: 3;
+  background-color: #232323;
+  padding: 20px;
+}
+
+.add-movie-part{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.find-movie-title{
+    color: white;
+    font-size: 25px;
+    font-weight: 400px;
+}
+
+.list-page-lower {
+  flex: 9;
+  background-color: #232323;
+  padding: 20px;
+}
+
+.config-list-part{
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.movies-list-part{
+    color: white;
+}
+
+.found-movies{
+    font-size: 18px;
+}
+
+.movies-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
