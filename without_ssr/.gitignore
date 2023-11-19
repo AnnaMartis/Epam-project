@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/with_ssr/.next
 /.pnp
 .pnp.js
 
